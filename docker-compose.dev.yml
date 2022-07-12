@@ -1,17 +1,19 @@
 version: '3'
 services:
   restaurant_backend:
+    image: restaurant_backend_image
     build: 
       context: .
       dockerfile: Dockerfile
     container_name: restaurant_backend
+    restart: always
     volumes:
       - .:/app
     env_file:
       - .env
     ports:
       - "8000:8000"
-    command: bash -c "python /app/restaurant_backend/manage.py makemigrations && python /app/restaurant_backend/manage.py migrate && python /app/restaurant_backend/manage.py runserver"
+    command: bash -c "python /app/restaurant_backend/manage.py makemigrations && python /app/restaurant_backend/manage.py migrate && python /app/restaurant_backend/manage.py runserver 0.0.0.0:8000"
 
 volumes:
   .:
