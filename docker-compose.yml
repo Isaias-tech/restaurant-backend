@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: restaurant_backend
+    restart: always
     volumes:
       - /var/www/restaurant-backend.isaias-tech.com/static:/app/static
       - /var/www/restaurant-backend.isaias-tech.com/media:/app/media
