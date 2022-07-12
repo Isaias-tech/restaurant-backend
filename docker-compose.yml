@@ -1,0 +1,16 @@
+version: '3'
+services:
+  restaurant_backend:
+    image: restaurant_backend_image
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: restaurant_backend
+    volumes:
+      - /var/www/restaurant-backend.isaias-tech.com/static:/app/static
+      - /var/www/restaurant-backend.isaias-tech.com/media:/app/media
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    command: bash /app/config/script/exec_django_gunicorn.bat
